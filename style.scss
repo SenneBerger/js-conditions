@@ -1,0 +1,64 @@
+body{
+  background-image: url('giphy.gif');
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  background-color: black;
+  font-family: 'Acme', sans-serif;
+  color: lightgrey;
+}
+
+.container{
+  display: flex;
+  flex-direction: column ;
+  justify-content: space-around;
+  align-items: center;
+
+}
+h1{
+  font-size: 100px;
+}
+
+.select{
+  height: 100px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.playerbox{
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.droptwo, .dropone{
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+
+
+}
+#players, #play, #p1choice, #p2choice{
+  height: 30px;
+  width: 100px;
+}
+
+#result{
+  font-size: 60px;
+  -webkit-animation-name: wiggle;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: 5;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+@keyframes wiggle {
+  0% {-webkit-transform: rotate(0deg);}
+  25% {-webkit-transform: rotate(-7deg);}
+  50% {-webkit-transform: rotate(15deg);}
+  75% {-webkit-transform: rotate(-7deg);}
+  100% {-webkit-transform: rotate(0deg);}
+
+}

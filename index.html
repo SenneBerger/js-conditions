@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+
+  <title>Rock, paper, scissors, ...</title>
+</head>
+
+<body>
+  <div class="container">
+
+
+    <h1>Rock, Paper, Scissors....</h1>
+    <!--<h2>Lizard, Spock!</h2>-->
+
+    <div class="select">
+      <h3>Amount of players</h3>
+      <select name="players" id="players">
+        <option value="1">1 Player</option>
+        <option value="2">2 Players</option>
+      </select>
+    </div>
+    <div class="playerbox">
+
+
+      <div class="dropone">
+        <h3>Player 1</h3>
+        <select name="p1choice" id="p1choice"></select>
+      </div>
+
+      <div class="droptwo">
+        <h3>Player 2</h3>
+        <select name="p2choice" id="p2choice" disabled></select>
+      </div>
+    </div>
+
+    <div class="playbutton">
+
+      <button id="play">Play</button>
+      
+    </div>
+
+    <div id="result"></div>
+
+  </div>
+
+
+
+  <script>
+    let play = document.getElementById("play");
+    play.addEventListener("click", playGame);
+    let players = document.getElementById("players");
+    players.addEventListener("change", changeGame);
+    let p1choice = document.getElementById("p1choice");
+    let p2choice = document.getElementById("p2choice");
+    //choices
+    let choices = ["rock", "paper", "scissors"];
+
+    console.log(choices.length);
+
+
+
+    for (choice of choices) {
+      let element = document.createElement("option");
+      element.value = choice;
+      element.innerHTML = choice;
+      p1choice.append(element);
+    }
+    for (choice of choices) {
+      let element = document.createElement("option");
+      element.value = choice;
+      element.innerHTML = choice;
+      p2choice.append(element);
+    }
+
+    function playGame(event) {
+      let p1value = p1choice.value;
+      let p2value;
+
+      if (p2choice.disabled === false) {
+        p2value = p2choice.value;
+      }
+      //random outcome if playing solo
+      else {
+        p2value = choices[Math.floor(Math.random() * choices.length)];
+      }
+
+      compare(p1value, p2value);
+    }
+
+    function compare(p1value, p2value) {
+
+      if (p1value === p2value) {
+        document.getElementById("result").innerHTML = "Try Again";
+      } else if (p1value === "rock") {
+        if (p2value === "scissors") {
+          document.getElementById("result").innerHTML = "player 1 wins";
+        } else {
+          document.getElementById("result").innerHTML = "player 2 wins";
+        }
+      } else if (p1value === "scissors") {
+        if (p2value === "paper") {
+          document.getElementById("result").innerHTML = "player 1 wins";
+        } else {
+          document.getElementById("result").innerHTML = "player 2 wins";
+        }
+      } else if (p1value === "paper") {
+        if (p2value === "rock") {
+          document.getElementById("result").innerHTML = "player 1 wins";
+        } else {
+          document.getElementById("result").innerHTML = "player 2 wins";
+        }
+      }
+    }
+
+    function changeGame(event) {
+      //single player
+      if (players.value === "1") {
+        p2choice.disabled = true;
+      }
+      //multiplayer
+      else {
+        p2choice.disabled = false;
+      }
+    }
+  </script>
+  <script src="main.js">
+
+  </script>
+</body>
+
+</html>
