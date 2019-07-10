@@ -73,5 +73,16 @@ h1 {
     -webkit-transform: rotate(0deg);
   }
 }
+.groot {
+  background-image: url("grooter.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 180px;
+  position: absolute;
+  top: 780px;
+  left: 918px;
+  z-index: -1;
+}
 
 /*# sourceMappingURL=style.css.map */
